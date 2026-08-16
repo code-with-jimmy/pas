@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Password genrator</title>
+<style>
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body{
+  
+}
+
+.container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box{
+  background: linear-gradient(45deg, #00F004, #4B884C);
+  width: 80%;
+  height: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.box h1{
+  text-align: center;
+  font-size: 25px;
+}
+
+
+.mainbox{
+  display: flex;
+  gap: 10px;
+}
+
+
+#taskInput{
+  width: 70%;
+  font-size: 20px;
+  height: 30px;
+  text-align: center;
+ outline: 0;
+ border-radius: 10px;
+ border: 2px solid #0D500E;
+ background: transparent;
+}
+
+
+#btn{
+  width: 30%;
+font-size: px;
+height: 30px;
+text-align: center;
+outline: 0;
+border-radius: 10px;
+border: 2px solid #0D500E;
+background: transparent;
+transition: all 0.2s ease;
+}
+
+#btn:active{
+  background: linear-gradient(45deg, #B407F9, #F90756);
+box-shadow: 0px 0px 10px #488666;
+transform: scale(1.05);
+}
+
+.inputbox{
+  display: flex;
+  gap: 24px;
+}
+
+
+.inputbox1{
+  display: flex;
+  justify-content: space-between;
+}
+
+.submitbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#submit{
+  width: 40%;
+  height: 26px;
+  text-align: center;
+outline: 0;
+border-radius: 10px;
+border: 2px solid #0D500E;
+background: transparent;
+transition: all 0.2s ease;
+}
+
+#submit:active{
+  background: linear-gradient(45deg, #B407F9, #F90756);
+ box-shadow: 0px 0px 10px #488666;
+ transform: scale(1.05);
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Password genrator</h1>
+      <div class="mainbox">
+ <input type="text" id="taskInput" placeholder="Genrator…" readonly>
+ <button id="btn">Copy</button>
+      </div>
+      <div class="inputbox">
+  <label for="a">Password (<span id="value">4</span>)</label>
+        <input type="range" min="2" max="8" value="4" id="rangValue">
+      </div>
+      
+      <div class="inputbox1">
+        <label for="a">uppercse</label>
+      <input type="checkbox" id="uppercse" checked>
+      </div>
+      
+      <div class="inputbox1">
+  <label for="a">number</label>
+  <input type="checkbox" id="number" checked>
+</div>
+
+<div class="submitbox">
+  <button id="submit">Genrator</button>
+</div>
+    </div>
+  </div>
+  
+  <script>
+    // step 1 refrance
+
+const taskInput = document.getElementById("taskInput");
+
+const rangValue = document.getElementById("rangValue");
+
+const value = document.getElementById("value");
+
+
+const uppercse = document.getElementById("uppercse");
+
+
+const number = document.getElementById("number")
+
+const btn = document.getElementById("btn");
+
+
+const submit = document.getElementById("submit");
+
+
+// step 2 range value ki value
+
+rangValue.addEventListener("input", () => {
+  value.textContent = rangValue.value;
+})
+
+
+
+// step 3 password genrator
+
+let ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+let num = "1234567890";
+
+
+// step 4 checkbox cheking 
+
+
+
+submit.addEventListener("click", () => {
+  
+  let task = "";
+  
+if(uppercse.checked) task +=  ABC;
+  
+  if(number.checked) task +=  num;
+  
+  if(task === ""){
+    alert("Before Selcted The Any Options?")
+    return;
+  }
+  
+  
+  let exart = rangValue.value;
+  
+  let pass = "";
+  for(let i = 0; i < exart; i++){
+  let random = Math.floor(Math.random() * task.length);
+  pass += task[random];
+  }
+  taskInput.value =  pass;
+})
+
+
+
+// step 5 copy to password
+
+
+btn.addEventListener("click", () => {
+  if(taskInput.value === ""){
+    alert("Please Before Genrator Password And Again Copy Password?")
+    return;
+  }
+  navigator.clipboard.writeText(taskInput.value);
+  
+  btn.textContent = "Copied!";
+  
+  setTimeout(() => {
+    btn.textContent = "Copy";
+  }, 1500)
+})
+
+
+
+  </script>
+</body>
+</html>
