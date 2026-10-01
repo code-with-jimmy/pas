@@ -20,6 +20,9 @@ section{
   padding: 30px 20px;
   width: 95%;
   border-radius: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;   
+  -ms-user-select: none;     
 }
 
 
@@ -41,9 +44,10 @@ section{
   padding: 0 0 0 10px;
   font-size: 15.8px;
   background: #00000096;
-  border-radius: 5px 0 0 5px;
+  border-radius: 8px 0 0 8px;
   outline: 0;
-  border: 2px solid #00000000;
+  border: 1.5px solid #00000080;
+  border-right: 0;
   color: #E8D6D6;
 }
 
@@ -55,7 +59,7 @@ section{
   width: 30%;
   background: #000000D9;
   border: 0;
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 8px 8px 0;
   color: #fff;
   cursor: pointer;
 }
@@ -114,7 +118,7 @@ section{
   width: 100%;
   padding: 12px 0;
   border: 0;
-  border-radius: 5px;
+  border-radius: 8px;
   color: #fff;
   transition: all 0.2s ease;
   font-size: 20px;
